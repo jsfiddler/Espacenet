@@ -1,0 +1,159 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style>
+/*Enter some style here*/
+
+body{
+	background-color:rgba(255,255,0,0.3);
+}
+
+  /*=================Buttons================*/
+button{
+   background-color: #ffffff;
+   border-radius: 2px;
+   border: 2px solid black;
+   transition-duration: 0.4s;
+}
+
+#test{
+   background-color: rgba(0,128,0,0.3);
+}
+
+
+button:hover{
+   background-color: burlywood;
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+}
+
+button:active{
+ box-shadow: 0 5px #666;
+ transform: translateY(4px);
+}
+
+
+div #upperbuttons{
+	padding-bottom:30px
+}
+
+div #changeData{
+	padding-bottom:20px; 
+	margin-bottom:10px; 
+	border: 1px solid gray;
+	border-radius: 5px; 
+}
+
+div #lowerButtons{
+	background-color:#ddd;
+	border: 1px solid gray;
+	border-radius: 5px; 
+}
+</style>
+</head>
+
+<body>
+<div id="upperButtons">
+	<button data-edit="bold"><b>B</b></button>
+	<button data-edit="hiliteColor:rgba(15,150,50,0.3)"><mark>text</mark></button>
+	<button data-edit="underline"><u>U</u></button>
+	<button data-edit="insertUnorderedList">Liste (<b>&#8285;</b>)</button>
+	<button id="insertLinkID">Link (&#128279)</button>
+	<button data-edit="insertHTML:<br>------------------">---</button>
+	<button data-edit="insertHTML:<br>|&amp;#10236;">|&#10236;</button>
+	<button id="imgResizeID">ReSize IMG (<b>&#8285;</b>)</button>
+	<button id="unFormatID">Format entfernen &#128501;</button>
+</div>
+
+<div id="changeData">
+<p id="editME" contenteditable="true"></p>
+</div>
+
+<div id="lowerButtons">
+<div>
+	<button id="btn1">Save this note! (&#128435;)</button>
+	<button id="btn2">Export this note as file (&#128464;)</button>
+	<button id="btn3">Remove this entry (&#128465;)</button>
+</div>
+<br>
+<div>
+	<button id="btn4">Export all notes (&#11123;)</button>
+	<button id="btn5">Import saved notes (&#11121;)</button>
+</div>
+
+<script>
+
+/*---------functions for WYSIWYG-editor----------*/
+	document.getElementById('insertLinkID').addEventListener('click',function(){        
+			let link=prompt('insert LINK here: ([STRG]+[V])','');
+			document.execCommand('createLink','false',link);},
+			false);
+			
+	document.getElementById('unFormatID').addEventListener('click',()=>{
+        myWindow.document.execCommand('removeFormat','false','');
+        myWindow.document.execCommand('unlink','false','');
+        },false);
+		
+	document.getElementById('imgResizeID').addEventListener('click',()=>{
+        var imgDetails=prompt('IMG:height','1:300');
+		/*prompt for number of image and size. First take number, then new size for height.*/
+       document.images[imgDetails.split(':')[0]-1].height=imgDetails.split(':')[1];
+        },false);	
+
+	function edit(ev) {
+	  ev.preventDefault();
+	  const cmd_val = this.getAttribute("data-edit").split(":");
+	  document.execCommand(cmd_val[0], false, cmd_val[1]);
+	};		
+	
+	document.querySelectorAll("[data-edit]").forEach(btn=>
+	  btn.addEventListener("click", edit)
+	);
+	
+/*---------functions for lower buttons (save, export, etc.)----------*/
+	document.getElementById('btn1').addEventListener('click',()=>{
+	var txt=document.getElementById('editME').innerHTML;
+	localStorage.setItem(window.opener.location.pathname.split('/')[4]+'_notes',txt);
+	},false);
+	
+	document.getElementById('btn2').addEventListener('click',()=>{
+		var PN=window.opener.location.pathname.split('/')[6].split('?')[0];
+		var FAMN=window.opener.location.pathname.split('/')[4];
+		var filename=PN+"_Notizen.htm";
+		var text=localStorage.getItem(FAMN+'_notes');  
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+		element.style.display = 'none';
+		window.opener.document.body.appendChild(element);  
+		element.click();
+		window.opener.document.body.removeChild(element);
+	},false);
+	
+	document.getElementById('btn3').addEventListener('click',()=>{
+	localStorage.removeItem(window.opener.location.pathname.split('/')[4]+'_notes');
+	},false);
+	
+	document.getElementById('btn4').addEventListener('click',()=>{
+	  var d=Date().split(' ');
+	  var filename= 'localStorage'+'_'+d[3]+d[4].replaceAll(':','')+'.txt';
+	  var text=JSON.stringify(localStorage);
+	  var element = document.createElement('a');
+	  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	  element.setAttribute('download', filename);
+	  element.style.display = 'none';
+	  window.opener.document.body.appendChild(element);  
+	  element.click();
+	  window.opener.document.body.removeChild(element);
+	},false);
+	
+	document.getElementById('btn5').addEventListener('click',()=>{
+		var inputTXT=prompt('paste the localStorage-data here:','');
+		var data=JSON.parse(decodeURIComponent(inputTXT));
+		for (x in data) {localStorage.setItem(x,data[x])};
+	},false);	
+
+	
+</script>
+
+</body>
+</html>
