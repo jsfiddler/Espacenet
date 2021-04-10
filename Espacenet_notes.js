@@ -1,6 +1,6 @@
 javascript:
 /*PART I: create a window to use a localFile*/
-let d=new Date;
+var d=new Date;
 /*create the new window*/
 window.document.title='Espacnet ('+d.getHours()+':'+d.getMinutes()+'h) with YS';
 
