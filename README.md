@@ -1,6 +1,6 @@
 # espacenet-public
 
-##General remarks
+## General remarks
 This repository contains functions for [Espacenet](https://worldwide.espacenet.com) which might be useful to others as well.
 
 ## Functions
