@@ -50,10 +50,92 @@ div #lowerButtons{
 	border: 1px solid gray;
 	border-radius: 5px; 
 }
+
+/*W3-school styles
+Credits go to: https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp */
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 10%; /* 10% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 15px; /* 15px top margin */
+}
+
+/* The navigation links inside the overlay */
+.overlay p {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay p:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay p {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+#btn6{
+color:black;
+background-color:white;
+}
+
+#btn6:hover{
+color:white;
+background-color:black;
+}
 </style>
 </head>
 
 <body>
+
+<div id="myNav" class="overlay">
+  <div class="overlay-content">
+  	<p id="btn6">Send me back (&#x1F81C;)</p>
+	<p id="btn2">Export this as file (&#128464;)</p>
+	<p id="btn3">Remove this entry (&#128465;)</p>
+	<p id="btn4">Export all notes (&#x2913;)</p>
+	<p id="btn5">Import notes (&#x2912;)</p>
+  </div>
+  
+</div>
+
 <div id="upperButtons">
 	<button data-edit="bold"><b>B</b></button>
 	<button data-edit="hiliteColor:rgba(15,150,50,0.3)"><mark>text</mark></button>
@@ -74,13 +156,7 @@ div #lowerButtons{
 <div id="lowerButtons">
 <div>
 	<button id="btn1">Save this note! (&#x1F5AB;)</button>
-	<button id="btn2">Export this as file (&#128464;)</button>
-	<button id="btn3">Remove this entry (&#128465;)</button>
-</div>
-<br>
-<div>
-	<button id="btn4">Export all notes (&#x2B07;)</button>
-	<button id="btn5">Import notes (&#x2B06;)</button>
+	<button onclick="openNav()">&#9776; (more Options)</button>
 </div>
 
 <script>
@@ -156,6 +232,16 @@ div #lowerButtons{
 	},false);	
 
 	
+</script>
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+document.getElementById("btn6").addEventListener('click',closeNav,false);
 </script>
 
 </body>
