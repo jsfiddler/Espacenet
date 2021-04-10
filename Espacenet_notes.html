@@ -93,8 +93,8 @@ div #lowerButtons{
 			false);
 			
 	document.getElementById('unFormatID').addEventListener('click',()=>{
-        myWindow.document.execCommand('removeFormat','false','');
-        myWindow.document.execCommand('unlink','false','');
+        document.execCommand('removeFormat','false','');
+        document.execCommand('unlink','false','');
         },false);
 		
 	document.getElementById('imgResizeID').addEventListener('click',()=>{
