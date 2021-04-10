@@ -51,8 +51,7 @@ div #lowerButtons{
 	border-radius: 5px; 
 }
 
-/*W3-school styles
-Credits go to: https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp */
+/*W3-school styles*/
 
 /* The Overlay (background) */
 .overlay {
@@ -175,7 +174,8 @@ background-color:black;
 	document.getElementById('imgResizeID').addEventListener('click',()=>{
         var imgDetails=prompt('IMG:height','1:300');
 		/*prompt for number of image and size. First take number, then new size for height.*/
-       document.images[imgDetails.split(':')[0]-1].height=imgDetails.split(':')[1];
+       document.images[imgDetails.split(':')[0]-1].setAttribute('width','auto');
+	   document.images[imgDetails.split(':')[0]-1].setAttribute('height',imgDetails.split(':')[1]);
         },false);	
 
 	function edit(ev) {
