@@ -1,57 +1,91 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 <style>
+
 /*Enter some style here*/
 
 body{
 	background-color:rgba(255,255,0,0.3);
 }
 
-/*=================contentEditable:remove border================*/
+/*=================contentEditable================*/
 [contenteditable] {
   outline: 0px solid transparent;
 }
-  /*=================Buttons================*/
-button{
-   background-color: #ffffff;
-   border-radius: 2px;
-   border: 2px solid black;
-   transition-duration: 0.4s;
+
+[contenteditable]:hover{
+	outline: 0px solid transparent;
+	background-color: white;
 }
 
-#test{
-   background-color: rgba(0,128,0,0.3);
+/*=================optionGroup: save buttons================*/
+
+.optionGroup{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  outline: none;
 }
 
-
-button:hover{
-   background-color: burlywood;
-   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+.optionGroup_dropdown {
+  position: absolute;
+  display: inline;
 }
 
-button:active{
- box-shadow: 0 5px #666;
- transform: translateY(4px);
+.optionGroup_dropdown {  patting-bottom: 100px;}
+
+.optionGroup:hover, .optionGroup_dropdown:hover .optionGroup {
+background-color: rgba(255, 255, 255, 1); 
+color:black;
 }
 
+/*=============upperButtonGroup: Fixed Top Menu=================*/
 
-div #upperbuttons{
-	padding-bottom:30px
+
+/* ID:upperButtonGroup */
+#upperButtonGroup {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-#changeData:hover{
-	border: 1px solid gray;
-	border-radius: 5px; 
+/* Links inside the navbar */
+#upperButtonGroup button {
+background-color: white; /* Green background */
+  border: 1px solid black; /* Green border */
+  float: left;
+  color: rgba(0,0,0,0.7);
+  text-align: center;
+  //text-decoration: none;
+  cursor: pointer; 
 }
 
-div #lowerButtons{
-	background-color:#ddd;
-	border: 1px solid gray;
-	border-radius: 5px; 
+#upperButtonGroup button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
 }
 
-/*W3-school styles*/
+#upperButtonGroup:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change background on mouse-over */
+#upperButtonGroup button:hover {color: black;}
+
+/* Main content */
+.main {  margin-top: 30px; /* Add a top margin to avoid content overlay */}
+
+
+/*=============W3-school styles: moreOptions=================*/
 
 /* The Overlay (background) */
 .overlay {
@@ -69,19 +103,19 @@ div #lowerButtons{
 }
 
 /* Position the content inside the overlay */
-.overlay-content {
+.overlay_content {
   position: relative;
-  top: 10%; /* 10% from the top */
+  top: 5%; /* 5% from the top */
   width: 100%; /* 100% width */
   text-align: center; /* Centered text/links */
-  margin-top: 15px; /* 15px top margin */
+  margin-top: 10px; /* 10px top margin */
 }
 
 /* The navigation links inside the overlay */
 .overlay p {
   padding: 8px;
   text-decoration: none;
-  font-size: 36px;
+  font-size: 20px;
   color: #818181;
   display: block; /* Display block instead of inline */
   transition: 0.3s; /* Transition effects on hover (color) */
@@ -90,6 +124,7 @@ div #lowerButtons{
 /* When you mouse over the navigation links, change their color */
 .overlay p:hover, .overlay a:focus {
   color: #f1f1f1;
+  cursor: pointer; 
 }
 
 /* Position the close button (top right corner) */
@@ -124,39 +159,44 @@ background-color:black;
 
 <body>
 
-<div id="myNav" class="overlay">
-  <div class="overlay-content">
-  	<p id="btn6">Send me back (&#x1F81C;)</p>
-	<p id="btn2">Export this as file (&#128464;)</p>
-	<p id="btn3">Remove this entry (&#128465;)</p>
-	<p id="btn4">Export all notes (&#x2913;)</p>
-	<p id="btn5">Import notes (&#x2912;)</p>
+<div id="moreOptionsID" class="overlay">
+  <div class="overlay_content">
+  	<p id="btn6">Send me back (<i class="fas fa-long-arrow-alt-left"></i>)</p>
+	<p id="btn2">Download note as file (<i class="fas fa-file-download"></i>)</p>
+	<p id="btn3">Remove this note (&#128465;)</p>
+	<p id="btn4">Download all notes (<i class="fas fa-download"></i>)</p>
+	<p id="btn5">Import saved notes (<i class="fas fa-upload"></i>)</p>
   </div>
   
 </div>
 
-<div id="upperButtons">
+
+<div id="upperButtonGroup">
 	<button data-edit="bold"><b>B</b></button>
-	<button data-edit="hiliteColor:rgba(15,150,50,0.3)"><mark>text</mark></button>
+	<button data-edit="hiliteColor:rgba(15,150,50,0.3)"><mark>text</mark> (<i class="fas fa-highlighter"></i>)</button>
 	<button data-edit="underline"><u>U</u></button>
-	<button data-edit="insertUnorderedList">Liste (<b>&#8285;</b>)</button>
-	<button id="insertLinkID">Link (&#128279)</button>
-	<button data-edit="insertHTML:&emsp;">TAB</button>
+	<button data-edit="insertUnorderedList"><i class="fas fa-list-ul"></i></button>
+	<button id="insertLinkID">Link (<i class="fas fa-external-link-alt"></i>)</button>
+	<button data-edit="insertHTML:&emsp;"><i class="fas fa-indent"></i></button>
 	<button data-edit="insertHTML:----------------------------">---</button>
 	<button data-edit="insertHTML:<br>|&#10236;">|&#10236;</button>
-	<button id="imgResizeID">ReSize IMG (<b>&#8285;</b>)</button>
-	<button id="unFormatID">Format entfernen &#128501;</button>
+	<button id="imgResizeID">ReSize IMG (<i class="fas fa-expand-arrows-alt"></i>)</button>
+	<button id="unFormatID"><s>Format</s> (<i class="fas fa-eraser"></i>)</button>
 </div>
 
-<div id="changeData">
-<p id="editME" contenteditable="true"></p>
+<div  class="main">
+	<div id="changeData">
+		<p id="editME" contenteditable="true"></p>
+	</div>
+
+	<!-- save Buttons--->
+		<button class="optionGroup" id="btn1">Save this note! (<i class="fas fa-save"></i>)</button>
+		<div class="optionGroup_dropdown">
+		<button class="optionGroup" id="moreOptionsBTN" style="border-left:1px solid "rgba(0, 0, 0, 0.5)" onclick="openNav()" onmouseover="showmoreOptions()" onmouseout="hidemoreOptions()"><i class="fas fa-sliders-h"></i></button>
+		</div>
 </div>
 
-<div id="lowerButtons">
-<div>
-	<button id="btn1">Save this note! (&#x1F5AB;)</button>
-	<button onclick="openNav()">&#9776; (more Options)</button>
-</div>
+
 
 <script>
 
@@ -234,12 +274,20 @@ background-color:black;
 	
 </script>
 <script>
+function showmoreOptions() {
+  document.getElementById('moreOptionsBTN').innerHTML='<i class="fas fa-sliders-h"></i> more options';
+}
+
+function hidemoreOptions(){
+	document.getElementById('moreOptionsBTN').innerHTML='<i class="fas fa-sliders-h"></i>';
+}
+
 function openNav() {
-  document.getElementById("myNav").style.width = "100%";
+  document.getElementById("moreOptionsID").style.width = "100%";
 }
 
 function closeNav() {
-  document.getElementById("myNav").style.width = "0%";
+  document.getElementById("moreOptionsID").style.width = "0%";
 }
 document.getElementById("btn6").addEventListener('click',closeNav,false);
 </script>
