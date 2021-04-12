@@ -1,4 +1,4 @@
-# espacenet-public
+# What is espacenet notes?
 
 ## General remarks
 This repository contains functions for [Espacenet](https://worldwide.espacenet.com) which might be useful to others as well.
