@@ -28,7 +28,7 @@ Espacenet saves your history in an indexedDB called "espacenet". This bookmarkle
 2. ..
 3. ..
 
-### espaceBM (ver. 3.0
+### espaceBM (ver. 3.0) 
 After two successful implementations, its time for version 3.0. "espaceBM" is a combined bookmarklet, which enriches the search on worldwide.espacenet.com with many additional features such as: forward search, get valid espacenet-Links for more than 10 pns, E.I.S (EspacenetImageSearch), autoScroller & scroll2Highlight.
 
 #### How does it work?
@@ -36,6 +36,7 @@ After two successful implementations, its time for version 3.0. "espaceBM" is a 
 1. ..
 2. ..
 3. ..
+4.... 
 
 Feel free to edit them, use them and tell me if you wish to implement more stuff or if you find bugs (use ISSUE).
 
