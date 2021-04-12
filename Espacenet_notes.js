@@ -5,7 +5,7 @@ var d,myWindow,input_element, openFile;
 
 var d=new Date;
 /*create the new window*/
-window.document.title='Espacnet ('+d.getHours()+':'+d.getMinutes()+'h) with YS';
+window.document.title='Espacenet ('+d.getHours()+':'+d.getMinutes()+'h) with YS';
 
 myWindow = window.open("", "myWindow", "width=700,height=600,   top=0,left=0,scrollbars,resizable");
 var openFile = function(e) {        
