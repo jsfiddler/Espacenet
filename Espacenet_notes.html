@@ -152,6 +152,7 @@ background-color:#333333;
 	<p id="btn3">Remove this note (&#128465;)</p>
 	<p id="btn4">Download all notes (<i class="fas fa-download"></i>)</p>
 	<p id="btn5">Import saved notes (<i class="fas fa-upload"></i>)</p>
+	<input id="uploadDialog" type="file" style="display:none">
   </div>
   
 </div>
@@ -251,12 +252,28 @@ background-color:#333333;
 	  window.opener.document.body.removeChild(element);
 	},false);
 	
-	document.getElementById('btn5').addEventListener('click',()=>{
-		var inputTXT=prompt('paste the localStorage-data here:','');
-		var data=JSON.parse(decodeURIComponent(inputTXT));
-		for (x in data) {localStorage.setItem(x,data[x])};
-	},false);	
 
+
+
+var uploadFile = function(e) {        
+        var uploadFileTarget = e.target;        
+        var reader = new FileReader();
+          
+        reader.onload = function(){  
+			var uploadData=JSON.parse(reader.result);        
+			for (x in uploadData){localStorage.setItem(x,uploadData[x])}       
+		};        
+	  reader.readAsText(uploadFileTarget.files[0], 'ISO-8859-4');
+	  console.group('You opened the following file');
+	  console.log(uploadFileTarget.files[0].name);
+	  console.groupEnd();     
+};
+
+
+	document.getElementById('uploadDialog').addEventListener('change',function(e){uploadFile(e)},false);
+	document.getElementById('uploadDialog').addEventListener('click',function(e){document.getElementById('uploadDialog').style.display="none";},false);
+	document.getElementById('btn5').addEventListener('click',function(e){document.getElementById('uploadDialog').removeAttribute('style')},false);	
+	
 	
 </script>
 <script>
