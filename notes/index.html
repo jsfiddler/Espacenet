@@ -1,0 +1,300 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+
+body{
+	background-color:rgba(255,255,0,0.3);
+}
+
+/*=================contentEditable================*/
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+[contenteditable]:hover{
+	outline: 0px solid transparent;
+	background-color: white;
+}
+
+/*=============upperButtonGroup: Fixed Top Menu=================*/
+
+/* ID:upperButtonGroup */
+#upperButtonGroup {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Links inside the navbar */
+#upperButtonGroup button {
+	background-color: rgba(0,0,0,0.5); 
+	border: 1px solid #555555; 
+	float: left;
+	color: white;
+	text-align: center;
+	Height:25px;
+	cursor: pointer; 
+}
+
+#upperButtonGroup button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+#upperButtonGroup:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change background on mouse-over */
+#upperButtonGroup button:hover {
+	color: black;
+	background-color: white;
+}
+
+/* Main content */
+.main {  margin-top: 30px; /* Add a top margin to avoid content overlay */}
+
+
+/*=============W3-school styles: moreOptions=================*/
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9); 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay_content {
+  position: relative;
+  top: 5%;
+  width: 100%;
+  text-align: center; 
+  margin-top: 10px;
+}
+
+.overlay p {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block; 
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay p:hover, .overlay p:focus {
+  color: #f1f1f1;
+  cursor: pointer; 
+}
+
+#btn6{
+color:black;
+background-color:white;
+transition: all 0.5s;
+}
+
+#btn6:hover{
+color:white;
+background-color:#333333;
+}
+
+/*=================optionGroup: save buttons================*/
+
+.optionGroup{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  Height:30px;
+  border: none;
+  outline: none;
+}
+
+.optionGroup_dropdown {
+  position: absolute;
+  display: inline;
+}
+
+.optionGroup_dropdown {  patting-bottom: 100px;}
+
+.optionGroup:hover, .optionGroup_dropdown:hover .optionGroup {
+	background-color: rgba(255, 255, 255, 1); 
+	color:black;
+	transition: all 0.5s;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="moreOptionsID" class="overlay">
+  <div class="overlay_content">
+  	<p id="btn6">Send me back (<i class="fas fa-long-arrow-alt-left"></i>)</p>
+	<p id="btn2">Download note as file (<i class="fas fa-file-download"></i>)</p>
+	<p id="btn3">Remove this note (&#128465;)</p>
+	<p id="btn4">Download all notes (<i class="fas fa-download"></i>)</p>
+	<p id="btn5">Import saved notes (<i class="fas fa-upload"></i>)</p>
+	<input id="uploadDialog" type="file" style="display:none">
+  </div>
+  
+</div>
+
+
+<div id="upperButtonGroup">
+	<button data-edit="bold"><b>B</b></button>
+	<button data-edit="hiliteColor:rgba(15,150,50,0.3)"><mark>text</mark> (<i class="fas fa-highlighter"></i>)</button>
+	<button data-edit="underline"><u>U</u></button>
+	<button data-edit="insertUnorderedList"><i class="fas fa-list-ul"></i></button>
+	<button id="insertLinkID">Link (<i class="fas fa-external-link-alt"></i>)</button>
+	<button data-edit="insertHTML:&emsp;"><i class="fas fa-indent"></i></button>
+	<button data-edit="insertHTML:----------------------------">---</button>
+	<button data-edit="insertHTML:<br>|&#10236;">|&#10236;</button>
+	<button id="imgResizeID">ReSize IMG (<i class="fas fa-expand-arrows-alt"></i>)</button>
+	<button id="unFormatID"><s>Format</s> (<i class="fas fa-eraser"></i>)</button>
+</div>
+
+<div  class="main">
+	<div id="changeData">
+		<p id="editME" contenteditable="true"></p>
+	</div>
+
+	<!-- save Buttons: main:optionGroup--->
+		<button class="optionGroup" id="btn1">Save this note! (<i class="fas fa-save"></i>)</button>
+		<div class="optionGroup_dropdown">
+		<button class="optionGroup" id="moreOptionsBTN" style="border-left:1px solid "rgba(0, 0, 0, 0.5)" onclick="openNav()" onmouseover="showmoreOptions()" onmouseout="hidemoreOptions()"><i class="fas fa-sliders-h"></i></button>
+		</div>
+</div>
+
+
+
+<script>
+
+/*---------functions for WYSIWYG-editor----------*/
+	document.getElementById('insertLinkID').addEventListener('click',function(){        
+			let link=prompt('insert LINK here: ([STRG]+[V])','');
+			document.execCommand('createLink','false',link);},
+			false);
+			
+	document.getElementById('unFormatID').addEventListener('click',()=>{
+        document.execCommand('removeFormat','false','');
+        document.execCommand('unlink','false','');
+        },false);
+		
+	document.getElementById('imgResizeID').addEventListener('click',()=>{
+        var imgDetails=prompt('IMG:height','1:300');
+		/*prompt for number of image and size. First take number, then new size for height.*/
+       document.images[imgDetails.split(':')[0]-1].setAttribute('width','auto');
+	   document.images[imgDetails.split(':')[0]-1].setAttribute('height',imgDetails.split(':')[1]);
+        },false);	
+
+	function edit(ev) {
+	  ev.preventDefault();
+	  const cmd_val = this.getAttribute("data-edit").split(":");
+	  document.execCommand(cmd_val[0], false, cmd_val[1]);
+	};		
+	
+	document.querySelectorAll("[data-edit]").forEach(btn=>
+	  btn.addEventListener("click", edit)
+	);
+	
+/*---------functions for lower buttons (save, export, etc.)----------*/
+	document.getElementById('btn1').addEventListener('click',()=>{
+	var txt=document.getElementById('editME').innerHTML;
+	localStorage.setItem(window.opener.location.pathname.split('/')[4]+'_notes',txt);
+	},false);
+	
+	document.getElementById('btn2').addEventListener('click',()=>{
+		var PN=window.opener.location.pathname.split('/')[6].split('?')[0];
+		var FAMN=window.opener.location.pathname.split('/')[4];
+		var filename=PN+"_Notizen.htm";
+		var headerText='<h2><u>Notizen zu '+PN+'</u></h2>';
+		var text=localStorage.getItem(FAMN+'_notes');  
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + headerText+ encodeURIComponent(text));
+		element.setAttribute('download', filename);
+		element.style.display = 'none';
+		window.opener.document.body.appendChild(element);  
+		element.click();
+		window.opener.document.body.removeChild(element);
+	},false);
+	
+	document.getElementById('btn3').addEventListener('click',()=>{
+	localStorage.removeItem(window.opener.location.pathname.split('/')[4]+'_notes');
+	},false);
+	
+	document.getElementById('btn4').addEventListener('click',()=>{
+	  var d=Date().split(' ');
+	  var filename= 'localStorage'+'_'+d[3]+d[4].replaceAll(':','')+'.txt';
+	  var text=JSON.stringify(localStorage);
+	  var element = document.createElement('a');
+	  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	  element.setAttribute('download', filename);
+	  element.style.display = 'none';
+	  window.opener.document.body.appendChild(element);  
+	  element.click();
+	  window.opener.document.body.removeChild(element);
+	},false);
+	
+
+
+
+var uploadFile = function(e) {        
+        var uploadFileTarget = e.target;        
+        var reader = new FileReader();
+          
+        reader.onload = function(){  
+			var uploadData=JSON.parse(reader.result);        
+			for (x in uploadData){localStorage.setItem(x,uploadData[x])}       
+		};        
+	  reader.readAsText(uploadFileTarget.files[0], 'ISO-8859-4');
+	  console.group('You opened the following file');
+	  console.log(uploadFileTarget.files[0].name);
+	  console.groupEnd();     
+};
+
+
+	document.getElementById('uploadDialog').addEventListener('change',function(e){uploadFile(e)},false);
+	document.getElementById('uploadDialog').addEventListener('click',function(e){document.getElementById('uploadDialog').style.display="none";},false);
+	document.getElementById('btn5').addEventListener('click',function(e){document.getElementById('uploadDialog').removeAttribute('style')},false);	
+	
+	
+</script>
+<script>
+function showmoreOptions() {
+  document.getElementById('moreOptionsBTN').innerHTML='<i class="fas fa-sliders-h"></i> more options';
+}
+
+function hidemoreOptions(){
+	document.getElementById('moreOptionsBTN').innerHTML='<i class="fas fa-sliders-h"></i>';
+}
+
+function openNav() {
+  document.getElementById("moreOptionsID").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("moreOptionsID").style.width = "0%";
+}
+document.getElementById("btn6").addEventListener('click',closeNav,false);
+</script>
+
+</body>
+</html>
