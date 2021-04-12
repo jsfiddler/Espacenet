@@ -7,8 +7,6 @@
 
 <style>
 
-/*Enter some style here*/
-
 body{
 	background-color:rgba(255,255,0,0.3);
 }
@@ -23,31 +21,7 @@ body{
 	background-color: white;
 }
 
-/*=================optionGroup: save buttons================*/
-
-.optionGroup{
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 8px;
-  font-size: 16px;
-  border: none;
-  outline: none;
-}
-
-.optionGroup_dropdown {
-  position: absolute;
-  display: inline;
-}
-
-.optionGroup_dropdown {  patting-bottom: 100px;}
-
-.optionGroup:hover, .optionGroup_dropdown:hover .optionGroup {
-background-color: rgba(255, 255, 255, 1); 
-color:black;
-}
-
 /*=============upperButtonGroup: Fixed Top Menu=================*/
-
 
 /* ID:upperButtonGroup */
 #upperButtonGroup {
@@ -59,13 +33,13 @@ color:black;
 
 /* Links inside the navbar */
 #upperButtonGroup button {
-background-color: white; /* Green background */
-  border: 1px solid black; /* Green border */
-  float: left;
-  color: rgba(0,0,0,0.7);
-  text-align: center;
-  //text-decoration: none;
-  cursor: pointer; 
+	background-color: rgba(0,0,0,0.5); 
+	border: 1px solid #555555; 
+	float: left;
+	color: white;
+	text-align: center;
+	Height:25px;
+	cursor: pointer; 
 }
 
 #upperButtonGroup button:not(:last-child) {
@@ -79,7 +53,10 @@ background-color: white; /* Green background */
 }
 
 /* Change background on mouse-over */
-#upperButtonGroup button:hover {color: black;}
+#upperButtonGroup button:hover {
+	color: black;
+	background-color: white;
+}
 
 /* Main content */
 .main {  margin-top: 30px; /* Add a top margin to avoid content overlay */}
@@ -96,8 +73,8 @@ background-color: white; /* Green background */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  background-color: rgb(0,0,0); /* Black fallback color */
-  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9); 
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
@@ -105,55 +82,64 @@ background-color: white; /* Green background */
 /* Position the content inside the overlay */
 .overlay_content {
   position: relative;
-  top: 5%; /* 5% from the top */
-  width: 100%; /* 100% width */
-  text-align: center; /* Centered text/links */
-  margin-top: 10px; /* 10px top margin */
+  top: 5%;
+  width: 100%;
+  text-align: center; 
+  margin-top: 10px;
 }
 
-/* The navigation links inside the overlay */
 .overlay p {
   padding: 8px;
   text-decoration: none;
   font-size: 20px;
   color: #818181;
-  display: block; /* Display block instead of inline */
+  display: block; 
   transition: 0.3s; /* Transition effects on hover (color) */
 }
 
 /* When you mouse over the navigation links, change their color */
-.overlay p:hover, .overlay a:focus {
+.overlay p:hover, .overlay p:focus {
   color: #f1f1f1;
   cursor: pointer; 
-}
-
-/* Position the close button (top right corner) */
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
-
-/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
-@media screen and (max-height: 450px) {
-  .overlay p {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
 }
 
 #btn6{
 color:black;
 background-color:white;
+transition: all 0.5s;
 }
 
 #btn6:hover{
 color:white;
-background-color:black;
+background-color:#333333;
 }
+
+/*=================optionGroup: save buttons================*/
+
+.optionGroup{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  Height:30px;
+  border: none;
+  outline: none;
+}
+
+.optionGroup_dropdown {
+  position: absolute;
+  display: inline;
+}
+
+.optionGroup_dropdown {  patting-bottom: 100px;}
+
+.optionGroup:hover, .optionGroup_dropdown:hover .optionGroup {
+	background-color: rgba(255, 255, 255, 1); 
+	color:black;
+	transition: all 0.5s;
+}
+
+
 </style>
 </head>
 
@@ -189,7 +175,7 @@ background-color:black;
 		<p id="editME" contenteditable="true"></p>
 	</div>
 
-	<!-- save Buttons--->
+	<!-- save Buttons: main:optionGroup--->
 		<button class="optionGroup" id="btn1">Save this note! (<i class="fas fa-save"></i>)</button>
 		<div class="optionGroup_dropdown">
 		<button class="optionGroup" id="moreOptionsBTN" style="border-left:1px solid "rgba(0, 0, 0, 0.5)" onclick="openNav()" onmouseover="showmoreOptions()" onmouseout="hidemoreOptions()"><i class="fas fa-sliders-h"></i></button>
