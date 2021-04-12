@@ -225,7 +225,7 @@ background-color:#333333;
 		var PN=window.opener.location.pathname.split('/')[6].split('?')[0];
 		var FAMN=window.opener.location.pathname.split('/')[4];
 		var filename=PN+"_Notizen.htm";
-		var headerText='<h2><u>Notizen zu '+PN+':</u></h2>';
+		var headerText='<h2><u>Notizen zu '+PN+'</u></h2>';
 		var text=localStorage.getItem(FAMN+'_notes');  
 		var element = document.createElement('a');
 		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + headerText+ encodeURIComponent(text));
