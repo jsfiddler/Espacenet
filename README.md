@@ -7,7 +7,7 @@ This repository contains functions for [Espacenet](https://worldwide.espacenet.c
 ### notes
 The first function is a __post-it functionality__, that allows you to store your notes inside an object called ["localStorage"](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage).
 
-### How does it work?
+#### How does it work?
 
 1. Download both the .html and the .js-File.
 2. Create a bookmarklet with the content from the .js-file.
