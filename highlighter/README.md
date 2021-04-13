@@ -1,6 +1,6 @@
 # Highlighter for Espacenet
 
-In order to quickly identify your searched keywords inside the fulltext, you can click the attached bookmarklet.
+In order to **quickly identify your searched keywords inside the fulltext**, you can click the attached bookmarklet.
 It uses sessionStorage and css-Selectors to find the HTML-elements with class="search" aka. your keywords and automatically scrolls them into view.
 Furthermore, you can click it again, such that the next highlighted keyword will be displayed.
 
