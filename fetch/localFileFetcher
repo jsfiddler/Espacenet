@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML-template</title>
+<script>
+var FetchFunction= function(){
+	var url="https://worldwide.espacenet.com/3.2/rest-services/published-data/publication/epodoc/biblio";
+	var query=`EP1000000
+	EP0000009`;
+
+	var options={
+	  method: "POST",
+	  headers: {
+	  "Accept": "application/json",
+	  },
+	  body:query,
+	};
+
+	fetch(url,options)
+	  .then(response => {
+	  if (!response.ok){throw Error(response.status);};
+	  /*console.log(response);*/
+	  return response.json()
+	  })
+	  .then((response) => { 
+	  moreData=response;
+	//=========Display the data!================================|
+		 console.log("Got the following response from the fetching-operation: ")
+	  console.log(moreData);
+	  document.querySelector('div').textContent=JSON.stringify(moreData);
+	  alert('Got a response!\n Check the console for more details...')
+	  })
+  };
+  
+	window.onload=FetchFunction();
+</script>
+</head>
+
+<body>
+<div></div>
+
+</body>
+</html>
