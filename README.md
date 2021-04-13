@@ -19,6 +19,13 @@ The first function - [notes](https://github.com/jsfiddler/Espacenet/tree/main/no
 6. You can use the WYSIWYG-editor at the top of the post-it window to edit the content, insert images via copy/paste and either save this note or export/download it to a file.
 7. In case you need to delete your cache, the content of the localStorage will be deleted as well. Therefore it's recommended that you export/download your localStorage BEFORE you delete your browsers cache. This way, you can import the file later and continue with your previous notes. Even more than that, exporting and importing your notes allows for sharing your private notes with other users as well.
 
+### cross-domain requests via fetch-API
+Using the fetch-API or JSONP, it's possible to get data from Espacenet automatically. Inside the folder [fetch](https://github.com/jsfiddler/Espacenet/tree/main/fetch) you'll find different examples on how to fetch data from Espacenet. Those examples can also be used for other sides as well, if configured correctly...
+
+#### How does it work?
+
+1. Using either fetch or JSONP for getting data from Espacenet without credentials by directly accessing the OPS with a valid access token generated from browsing espacenet before.
+
 ### historyLogger
 Espacenet saves your history in an indexedDB called "espacenet". This bookmarklet opens a connection to this indexedDB and uses the data stored inside to create a file that contains your search history as .txt file. However, if you prefer .csv, XML-markup or anything else - feel free to implement it and share your code in the discussion-section.
 
