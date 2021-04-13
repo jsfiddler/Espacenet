@@ -6,4 +6,4 @@ Furthermore, you can click it again, such that the next highlighted keyword will
 
 ## It's not working!
 Have you checked if there are other family members available?
-Sometime you can't see your keyword, because its highlighted inside another family member. Switching to another family might help you find the words you are searching for.
+Sometime you can't see your keyword, because its highlighted inside another family member. Switching to another family might help you find the words you were searching for.
