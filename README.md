@@ -28,6 +28,15 @@ Espacenet saves your history in an indexedDB called "espacenet". This bookmarkle
 2. ..
 3. ..
 
+### jump to highlights inside fulltext
+See the [Espacenet Highlighter](https://github.com/jsfiddler/Espacenet/tree/main/highlighter) for details.
+
+#### How does it work?
+
+1. Uses css-styles attached to your the words matching your search-query to automatically scroll them into view.
+2. Saves a list of all the matches inside sessionStorage, such that the bookmarklert can be pressed multiple times.
+3. Attached a counter to the patent number after the second click, in order for you to see how many highlights have been found inside this section of the fulltext.
+
 ### espaceBM (ver. 3.0) 
 After two successful implementations, its time for version 3.0. "espaceBM" is a combined bookmarklet, which enriches the search on worldwide.espacenet.com with many additional features such as: forward search, get valid espacenet-Links for more than 10 pns, E.I.S (EspacenetImageSearch), autoScroller & scroll2Highlight.
 
