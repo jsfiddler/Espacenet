@@ -53,8 +53,3 @@ After two successful implementations, its time for version 3.0. "espaceBM" is a 
 2. ..
 3. ..
 4.... 
-
-Feel free to edit them, use them and tell me if you wish to implement more stuff or if you find bugs (use ISSUE).
-
-best regards,
-Manuel
