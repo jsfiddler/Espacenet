@@ -38,7 +38,7 @@ See the [Espacenet Highlighter](https://github.com/jsfiddler/Espacenet/tree/main
 3. Attached a counter to the patent number after the second click, in order for you to see how many highlights have been found inside this section of the fulltext.
 
 ### espaceBM (ver. 3.0) 
-After two successful implementations, its time for version 3.0. "espaceBM" is a combined bookmarklet, which enriches the search on worldwide.espacenet.com with many additional features such as: forward search, get valid espacenet-Links for more than 10 pns, E.I.S (EspacenetImageSearch), autoScroller & scroll2Highlight.
+After two successful implementations, its time for version 3.0. "espaceBM" is a combined bookmarklet, which enriches the search on worldwide.espacenet.com with many additional features such as: forward search, get valid espacenet-Links for more than 10 pns, E.I.S (EspacenetImageSearch) & autoScroller.
 
 #### How does it work?
 
