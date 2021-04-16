@@ -27,7 +27,7 @@ Using the fetch-API or JSONP, it's possible to get data from Espacenet automatic
 1. Using either fetch or JSONP for getting data from Espacenet without credentials by directly accessing the OPS with a valid access token generated from browsing espacenet before.
 
 ### historyLogger
-Espacenet saves your history in an indexedDB called "espacenet". This [bookmarklet](https://jsfiddler.github.com/Espacenet/history) opens a connection to this indexedDB and uses the data stored inside to create a file that contains your search history as .txt file. However, if you prefer .csv, XML-markup or anything else - feel free to implement it and share your code in the discussion-section.
+Espacenet saves your history in an indexedDB called "espacenet". This [bookmarklet](https://jsfiddler.github.io/Espacenet/history) opens a connection to this indexedDB and uses the data stored inside to create a file that contains your search history as .txt file. However, if you prefer .csv, XML-markup or anything else - feel free to implement it and share your code in the discussion-section.
 
 #### How does it work?
 
