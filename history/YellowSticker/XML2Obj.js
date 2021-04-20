@@ -42,3 +42,16 @@ importedXML.YS=[];
 		input_element.accept='.xml';
 		input_element.addEventListener('change',function(e){openFile(e);},false);
 	XMLwindow.document.body.appendChild(input_element);
+
+/*
+*//*create localStorage. Best used when ESPACENET is open...*//*
+
+for (i=0;i<importedXML.PN.length;i++) {
+	if (importedXML.FAMN[i] && importedXML.YS[i]){
+		key=importedXML.FAMN[i].padStart(9,'0')+'_notes';
+		value=importedXML.YS[i].replaceAll('|','<br>');
+		localStorage.setItem(key,value);
+		console.log(i,'added YS for: '+importedXML.PN[i]);
+		} else {console.log('no YS or FAMN for: '+importedXML.PN[i])};
+}
+*/
