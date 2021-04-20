@@ -12,7 +12,7 @@ importedXML.YS=[];
 	var openFile=function(e){
 		/*Creating an instance of the FileReader*/
 		reader=new FileReader();
-		reader.readAsText(e.target.files[0],'ISO-8859-1');
+		reader.readAsText(e.target.files[0],'UTF-8');
 		/*Charset for western europe!! Umlaute!!*/
 		/*If the file was read successfully*/
 		reader.onload=() => {
