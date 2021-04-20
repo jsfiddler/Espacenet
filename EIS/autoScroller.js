@@ -1,8 +1,8 @@
-var totalNumber=Number(document.querySelectorAll('h1')[1].textContent.split(':')[1].match(/\S+/)[0]);
+var totalNumber=Number(document.querySelectorAll('h1')[1].textContent.match(/\d+(\s|)\d+/)[0]);
 var options={characterData:true,subtree:true,  characterDataOldValue: true};
 var targetNode=document.querySelector('div[class*="publications-list-header__select-all-wrapper"]>button');
 
-	observer=new MutationObserver(e=>{autoScroller(e[0]["oldValue"].split(' ')[0])});
+	observer=new MutationObserver(e=>{autoScroller(e[0]["oldValue"].match(/\d+(\s|)\d+/)[0])});
 	//observer=new MutationObserver(mutationRecords=>{console.log('Dokumente zuvor: '+mutationRecords[0]["oldValue"].split(' ')[0])});
 	var targetNode=document.querySelector('div[class*="publications-list-header__select-all-wrapper"]>button');
 	observer.observe(targetNode,options);
