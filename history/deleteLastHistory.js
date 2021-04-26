@@ -5,17 +5,19 @@ var deleteHistory=function(){
 		var db=e.target.result;
 		var transaction=db.transaction('espacenetDataStore','readwrite');
 		var objectStore=transaction.objectStore('espacenetDataStore');
+		/*Since the object store is open now, run some operations...*/
 		keys=objectStore.getAllKeys();
 		stores=objectStore.getAll();
 			keys.onsuccess=k=>{stores.onsuccess=s=>{
-				k=k.target.result;s=s.target.result;
-				for (x in k){
-					if (k[x]==='search') {
-							var temp1=s[x]["history"][0].query.toString();
-							s[x]["history"].shift();
-							objectStore.put(s[x],k[x]);
+				_keys=k.target.result;_values=s.target.result;
+				for (x in _keys){/*Is there a called "search"? */
+					if (_keys[x]==='search') {/*Get the query of the last search*/
+							var lastSSquery=_values[x]["history"][0].query.toString();
+							/*Remove the first item by shifting and put it back in the DB*/
+							_values[x]["history"].shift();
+							objectStore.put(_values[x],_keys[x]);
 							/*console.log("%cDeleted the last history element successfully","color:blue; font-size:20px");*/
-							alert("deleted query:\n\n"+ temp1);
+							alert("deleted query:\n\n"+ lastSSquery);
 						};
 				};
 			};};
