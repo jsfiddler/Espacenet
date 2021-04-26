@@ -25,10 +25,10 @@ var deleteHistory=function(){
 };
 
 /*Create a button for the deleteHistory()-function*/
-btn1=document.createElement('button');
-btn1.textContent='delete last history';
+elem=document.createElement('p');
+elem.innerHTML='delete last history <i class="fas fa-eraser"></i>';
 
 /*Replace left nav-bar entry with new button and add click-event to this button*/
 targetNode=document.querySelector('[class*="nav__bar__section--left"]');
-targetNode.parentNode.replaceChild(btn1,targetNode);
-btn1.addEventListener("click",function(){deleteHistory()},false);
+targetNode.parentNode.replaceChild(elem,targetNode);
+elem.addEventListener("click",function(){deleteHistory()},false);
