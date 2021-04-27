@@ -1,4 +1,4 @@
-/*Run this code to create a forward-search*/
+/*Run this code to create a forward-search using fetch and a DOMParser*/
 var pnNumbers; var txt='';
 famn=window.location.pathname.split('/')[4];
 famn=famn.replace(/^0+/,'');
