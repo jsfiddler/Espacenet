@@ -56,6 +56,6 @@ if (location.pathname.indexOf('patent/search/family/')>0)
    {
     var FAMN=window.location.pathname.split('/')[4];
     myWindow.document.title='Notes for family number: '+window.location.pathname.split('/')[4];
-    !localStorage.getItem(FAMN+'_notes') ? myWindow.document.getElementById('editME').textContent='Noch kein YellowSticker gesetzt' : myWindow.document.getElementById('editME').innerHTML=localStorage.getItem(FAMN+'_notes');
+    !localStorage.getItem(FAMN+'_notes') ? myWindow.document.getElementById('editME').textContent='Noch kein YellowSticker gesetzt' : myWindow.document.getElementById('editME').innerHTML=localStorage.getItem(FAMN+'_notes').replaceAll('&lt;','<').replaceAll('&gt;','>');
    };
 });
