@@ -17,7 +17,9 @@ EIS_Window = window.open("", "EIS_Window", "scrollbars,resizable");
 
 
 /*Create the CSS-Style and document frame*/
-EIS_Window.document.write(`<html><head><style>
+EIS_Window.document.write(`<html><head>
+<link rel="icon" href="data:image/svg+xml,<svg viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+<style>
 * {box-sizing: border-box}
 
 /*Faster loading of the page*/
