@@ -31,7 +31,7 @@ function createLinks(PNs){
 	for (a=0; a<( (L-L%20)/20+1 ); a++){
 	   txt='';
 	   for (i=a*20;i<(a+1)*20;i++){
-			if (i==10) txt+= txt_num;
+			if (i==10 && L>9) txt+= txt_num;
 			!PNs[i] ? '': txt+=PNs[i]+", ";
 			}; 
 	   b=a+1;
