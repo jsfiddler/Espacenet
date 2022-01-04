@@ -68,9 +68,9 @@ if (_userChoice=='1' ) {
 
 	var downloadBackup= function downloadObject(obj){
 		var filename=prompt('Enter a filename for your backup','espaceBackup');
-		var blob = new Blob([JSON.stringify(obj, null, 2)], {type: "application/json;charset=utf-8"});
+		var blob = new Blob([JSON.stringify(obj, null, 2)], {type: 'application/json;charset=utf-8'});
 		var url = URL.createObjectURL(blob);
-		var elem = document.createElement("a");
+		var elem = document.createElement('a');
 		elem.href = url;
 		elem.download = filename+'.json';
 		document.body.appendChild(elem);
