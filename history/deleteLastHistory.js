@@ -1,6 +1,6 @@
 /*Function for deleting the last history entry...*/
 var deleteHistory=function(){
-	var connection=indexedDB.open('espacenet',2);
+	var connection=indexedDB.open('espacenet');
 	connection.onsuccess=(e) => {
 		var db=e.target.result;
 		var transaction=db.transaction('espacenetDataStore','readwrite');
