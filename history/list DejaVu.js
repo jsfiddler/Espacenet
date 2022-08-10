@@ -14,7 +14,7 @@ function browserDownloader(inputText,filename){
 }
 
 
-var connection = indexedDB.open('espacenet', 2);
+var connection = indexedDB.open('espacenet'); /*skip version, if you won't update it*/
 
 	connection.onsuccess = (e) => {
 		var database = e.target.result;
