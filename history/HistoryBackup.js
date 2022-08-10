@@ -8,7 +8,7 @@ var EspacenetBackup={};
 if (_userChoice=='1' ) {
 	/*named function expression*/
 	var importBackup = function importFunc(){
-		var connection=indexedDB.open('espacenet',2);
+		var connection=indexedDB.open('espacenet');
 		connection.onsuccess=(e) => {
 			var db=e.target.result;
 			var transaction=db.transaction('espacenetDataStore','readwrite');
@@ -44,7 +44,7 @@ if (_userChoice=='1' ) {
 		input_element.addEventListener('change',function(e){openFile(e);},false);
 	backupWindow.document.body.appendChild(input_element);
 } else{
-	var connection = indexedDB.open('espacenet', 2);
+	var connection = indexedDB.open('espacenet');
 
 	connection.onsuccess = (e) => {
 		var database = e.target.result;
