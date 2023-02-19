@@ -25,7 +25,7 @@ javascript: (function() {
 	};
 	if (window.location.href.includes('.espacenet.com') || window.location.href.includes('search.epo.org')) {
 		var XPnum = prompt('enter XP-number', 'XP012027767');
-		queryPdata(XPnum);
+		queryXPdata(XPnum);
 	} else {
 		alert('Only works on Espacenet or ANSERA')
 	}
