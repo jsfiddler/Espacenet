@@ -1,6 +1,6 @@
 javascript: (function() {
-	var logXPdata = (XPNum) => {
-		var destURL = encodeURI('https://worldwide.espacenet.com/3.2/rest-services/search?q=apd=' + XPnum);
+	var queryXPdata = (XPNum) => {
+		var destURL = encodeURI('https://worldwide.espacenet.com/3.2/rest-services/search?q='+'apd=' + XPNum+' OR ct=' +XPNum);
 		fetch(destURL, {
 			'headers': {
 				'accept': 'application/json,application/i18n+xml',
@@ -17,7 +17,7 @@ javascript: (function() {
 			'credentials': 'include'
 		}).then(e => e.text()).then(e => {
 			try {
-				alert(JSON.parse(e))
+				document.body.innerHTML = e;
 			} catch (e) {
 				alert(e)
 			}
@@ -25,7 +25,7 @@ javascript: (function() {
 	};
 	if (window.location.href.includes('.espacenet.com') || window.location.href.includes('search.epo.org')) {
 		var XPnum = prompt('enter XP-number', 'XP012027767');
-		logXPdata(XPnum);
+		queryPdata(XPnum);
 	} else {
 		alert('Only works on Espacenet or ANSERA')
 	}
