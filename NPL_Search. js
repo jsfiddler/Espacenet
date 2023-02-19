@@ -1,0 +1,32 @@
+javascript: (function() {
+	var logXPdata = (XPNum) => {
+		var destURL = encodeURI('https://worldwide.espacenet.com/3.2/rest-services/search?q=apd=' + XPnum);
+		fetch(destURL, {
+			'headers': {
+				'accept': 'application/json,application/i18n+xml',
+				'content-type': 'application/json',
+				'epo-trace-id': 'ghost'
+			},
+			'body': JSON.stringify({
+				'query': {
+					'fields': ['biblio', 'publications.doi', 'publications.accessnum']
+				}
+			}),
+			'method': 'POST',
+			'mode': 'cors',
+			'credentials': 'include'
+		}).then(e => e.text()).then(e => {
+			try {
+				alert(JSON.parse(e))
+			} catch (e) {
+				alert(e)
+			}
+		})
+	};
+	if (window.location.href.includes('.espacenet.com') || window.location.href.includes('search.epo.org')) {
+		var XPnum = prompt('enter XP-number', 'XP012027767');
+		logXPdata(XPnum);
+	} else {
+		alert('Only works on Espacenet or ANSERA')
+	}
+})();
